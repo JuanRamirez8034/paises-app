@@ -1,1 +1,52 @@
 /* You can add global styles to this file, and also import other style files */
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+/* .container-main-app{
+  display: block;
+  height: 100vh !important;
+  width: 100%;
+}
+.h-menu{
+  height: 120px;
+}
+
+.h-body-content{
+  height: calc(100% - 120px);
+}
+
+.sidebar, .result-body{
+  height: 100%;
+}
+
+.sidebar{
+  gap: 10px;
+  width: 100%;
+}
+
+.sidebar .item{
+  display: block;
+  padding: 10px 20px;
+  border-radius: 10px;
+  width: 90%;
+  margin: 10px auto 0 auto;
+}
+
+@media (max-width:768px) {
+  .sidebar{
+    height: 80px;
+    background: #000 !important;
+    overflow-x: auto;
+  }
+  .sidebar::-webkit-scrollbar{
+    display: none;
+  }
+  .sidebar .item{
+    width: 200px !important;
+    margin: 0;
+  }
+} */
