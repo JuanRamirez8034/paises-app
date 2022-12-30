@@ -1,1 +1,43 @@
-<p>by-country works!</p>
+<h2>Search by country</h2>
+<hr>
+
+<form action="#" class="row gap-2" autocomplete="off" (ngSubmit)="search();">
+  <div class="col-md-8">
+    <div class="form-floating">
+      <input type="text" class="form-control" placeholder="keywords..." name="argument" id="argument" [(ngModel)]="argument">
+      <label for="argument">keywords</label>
+    </div>
+  </div>
+  <div class="col-md">
+    <button type="submit" class="btn btn-secondary d-block w-100 h-100">search</button>
+  </div>
+</form>
+
+<hr>
+
+<table class="table table-hover" *ngIf="!errorConsult; else errorAlert">
+  <thead class="bg-info">
+    <tr>
+      <th>#</th>
+      <th>Flag</th>
+      <th>Name</th>
+      <th>People</th>
+      <th>More...</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <th>Img</th>
+      <th>Venezuela</th>
+      <th>Venezolanos</th>
+      <th><a href="#">Link...</a></th>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #errorAlert>
+  <div class="alert alert-danger">
+    No found data for "{{argument}}"
+  </div>
+</ng-template>
