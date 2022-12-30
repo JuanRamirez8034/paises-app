@@ -15,7 +15,7 @@
 
 <hr>
 
-<table class="table table-hover" *ngIf="!errorConsult; else errorAlert">
+<table class="table table-hover" *ngIf="!errorConsult && countryResponse.length > 0;">
   <thead class="bg-info">
     <tr>
       <th>#</th>
@@ -25,19 +25,21 @@
       <th>More...</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody *ngFor="let country of countryResponse; let i = index">
     <tr>
-      <th>1</th>
-      <th>Img</th>
-      <th>Venezuela</th>
-      <th>Venezolanos</th>
-      <th><a href="#">Link...</a></th>
+      <th>{{i}}</th>
+      <th class="d-flex align-items-center">
+        <img [src]="country.flags.png" alt="Flag - {{country.name.common}}" class="img-flag">
+      </th>
+      <th>{{country.name.common}}</th>
+      <th>{{country.population | number}}</th>
+      <!-- para rutas con parametros se debe pasar un arreglo en el cual se van armando cada uno de los argumenos -->
+      <th><a href="#" [routerLink]="['/showCountry', country.cca2]">Link...</a></th>
     </tr>
   </tbody>
 </table>
 
-<ng-template #errorAlert>
-  <div class="alert alert-danger">
-    No found data for "{{argument}}"
-  </div>
-</ng-template>
+
+<div class="alert alert-danger" *ngIf="errorConsult">
+  No found data for "{{argument}}"
+</div>

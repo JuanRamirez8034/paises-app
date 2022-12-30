@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CountriesService } from '../../services/countries.service';
+import { Country } from '../../interfaces/country.interfaces';
 
 @Component({
   selector: 'app-by-country',
@@ -7,8 +8,9 @@ import { CountriesService } from '../../services/countries.service';
 })
 export class ByCountryComponent {
 
-  public argument     : string = '';//variable asociada al valor del input de busqueda
-  public errorConsult : boolean = false;//variable para controlar el estado de erro de consultas y mostrar el alert
+  public argument        : string = '';//variable asociada al valor del input de busqueda
+  public errorConsult    : boolean = false;//variable para controlar el estado de erro de consultas y mostrar el alert
+  public countryResponse : Country[] = []; // arreglo de paises para almacenar las respuestas
 
   //inyectando o instanciando los servicios
   constructor(private countriesService:CountriesService) { }
@@ -23,10 +25,13 @@ export class ByCountryComponent {
     this.countriesService.searchCountry(this.argument)
       .subscribe(
         (resp)=>{
-          console.log(resp);
+          this.countryResponse = resp;//agregando la respuesta al arreglo correspondiente
+          console.log(this.countryResponse);
+          
         },
         (error)=>{
           console.log(error);
+          this.countryResponse = [];
           this.errorConsult = true;
         }
       );
