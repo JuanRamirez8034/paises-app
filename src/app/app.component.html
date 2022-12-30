@@ -1,23 +1,6 @@
 <div class="row container mt-4">
 
-  <div class="col-3">
-    <h2>Search options</h2>
-    <hr>
-    <ul class="list-group">
-      <!-- cunado se utilizan las rutas el modulo incorpora la funcionalidad de los "routerLink" para poder cambiar entre las mismas 
-           - el atributo "routerLinkActive" permite especificar una clase que se le aplica al elemento al encontrarse en esa ruta
-           - el atributo "[routerLinkActiveOptions]='{exact:true}'" especifica que cuando se encuentre en la ruta principal se elimine la clase active
-           - el atributo "[routerLinkActiveOptions]='{exact:true}'" solo se especifica cuando el path es un string vacio, caso contrario se omite
-      -->
-      <li routerLink=""  
-          routerLinkActive="active" 
-          [routerLinkActiveOptions]="{exact:true}"
-          class="list-group-item" 
-      >Search by country</li>
-      <li routerLink="region"  class="list-group-item" routerLinkActive="active">Search by region</li>
-      <li routerLink="capital"  class="list-group-item" routerLinkActive="active">Search by capital</li>
-    </ul>
-  </div>
+  <app-sidebar class="col-3"></app-sidebar>
 
   <div class="col-9">
     <!-- componenete de las rutas -->
