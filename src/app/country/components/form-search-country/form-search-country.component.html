@@ -3,12 +3,12 @@
     <div class="form-floating">
       <input type="text" 
         class="form-control" 
-        placeholder="keywords..." 
+        [placeholder]="placeholerSearch" 
         name="argument" id="argument" 
         [(ngModel)]="argument"
         (input)="debounceSearch($event);"
       >
-      <label for="argument">keywords</label>
+      <label for="argument">{{placeholerSearch}}</label>
     </div>
   </div>
   <div class="col-md">

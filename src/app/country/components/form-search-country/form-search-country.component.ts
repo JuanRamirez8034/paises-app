@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
@@ -9,6 +9,8 @@ import { debounceTime } from 'rxjs/operators';
 export class FormSearchCountryComponent implements OnInit{
 
   public argument : string = '';//variable que contiene el valor del input
+
+  @Input('placeholderSearch') public placeholerSearch : string = 'AnyPlaceHolder';// input para recibir el valor del placeholder para el input
 
   // creando el emisor de evento para pasar el evento a otro componente padre
   // 1 se inporta el "@Output()" desde angular/core
