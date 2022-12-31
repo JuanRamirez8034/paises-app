@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CountriesService } from '../../services/countries.service';
 import { Country } from '../../interfaces/country.interfaces';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-show-country',
@@ -18,19 +19,36 @@ export class ShowCountryComponent implements OnInit {
 
     // "params" permite extraer los parametros definidos en las rutas
     // los parametros encontrados deben estar definidos en el archivo de rutas de la aplicacion
-    this.activatedRoute.params
-      .subscribe(({code})=>{
 
-        console.log(code);
+    // this.activatedRoute.params
+    //   .subscribe(({code})=>{
 
-        // obteneiendo el valor desde el servicio
-        this.countriesService.searchByCode(code)
-          .subscribe((country:Country)=>{
-            console.log(country);
+    //     console.log(code);
+
+    //     // obteneiendo el valor desde el servicio
+    //     this.countriesService.searchByCode(code)
+    //       .subscribe((country:Country)=>{
+    //         console.log(country);
             
-        });
+    //     });
 
-      });
+    //   });
+
+
+    // forma corta de extraer la informacion utilizando un operador de rxjs
+    this.activatedRoute.params
+      .pipe(
+        // modificando la subscripcion, recibe el valor del primer "subscribe()" y retorna otra funcion que 
+        // contuene su propio "subscribe()" al cual se le pasa el parametro de la primera funcion
+        // y ese subscribe final se puede trabjar despues con el subscribe principal
+        
+        // switchMap(({code})=>{return this.countriesService.searchByCode(code)})
+        switchMap(({code}) => this.countriesService.searchByCode(code))
+      )
+      .subscribe((country:Country)=>{
+        console.log(country);
+        
+      })
 
   }
 
