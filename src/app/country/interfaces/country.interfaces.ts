@@ -106,3 +106,12 @@ export interface PostalCode {
   format: string;
   regex:  string;
 }
+
+export interface SearchCountryArguments{
+  argument : string;
+  mode     : {
+    country ?: boolean;
+    capital ?: boolean;
+    region  ?: boolean;
+  };
+}
