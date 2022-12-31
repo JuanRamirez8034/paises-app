@@ -37,4 +37,8 @@ export class ByCountryComponent {
         }
       );
   }
+
+  public sugge(event:any):void{
+    this.errorConsult = true;
+  }
 }

@@ -1,7 +1,13 @@
 <form action="#" class="row gap-2" autocomplete="off" (ngSubmit)="search();">
   <div class="col-md-8">
     <div class="form-floating">
-      <input type="text" class="form-control" placeholder="keywords..." name="argument" id="argument" [(ngModel)]="argument">
+      <input type="text" 
+        class="form-control" 
+        placeholder="keywords..." 
+        name="argument" id="argument" 
+        [(ngModel)]="argument"
+        (input)="debounceSearch($event);"
+      >
       <label for="argument">keywords</label>
     </div>
   </div>
