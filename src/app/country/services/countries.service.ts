@@ -26,4 +26,10 @@ export class CountriesService {
     return this.Http.get<Country[]>(url);
   }
 
+  // funcion para buscar por codigo de pais
+  public searchByCode(code:string):Observable<Country>{
+    const url = `${this.API_URL}/alpha/${code}`;
+    return this.Http.get<Country>(url);
+  }
+
 }
