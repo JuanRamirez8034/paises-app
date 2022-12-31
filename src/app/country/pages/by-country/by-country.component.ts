@@ -23,7 +23,7 @@ export class ByCountryComponent {
     //  (error)=>{} para procesar los errores que puedan ocurrir
     //  (result)=>{} para procesar un resultado en caso de que todo halla ocurrido con exito
     //)
-    this.countriesService.searchCountry({argument: argument, mode:{region:true}})
+    this.countriesService.searchCountry({argument: argument, mode:{country:true}})
       .subscribe(
         (resp)=>{
           this.countryResponse = resp;//agregando la respuesta al arreglo correspondiente

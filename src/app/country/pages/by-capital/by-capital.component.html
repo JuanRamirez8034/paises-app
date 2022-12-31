@@ -1,1 +1,18 @@
-<p>by-capital works!</p>
+<h2>Search by capital</h2>
+<hr>
+
+<!-- fomulario para realizar las busquedas -->
+<!-- recibimos el evento enviando desde el formulario "onSearch" y le pasamos el evento que contiene el argumento de texto -->
+<!-- recibimos el evento enviando desde el formulario "onBounce" y le pasamos el argumento que este trae a la funcion a ejecutar -->
+<app-form-search-country (onSearch)="search($event);" (onDebounce)="sugge($event);"></app-form-search-country>
+
+<hr>
+
+<!-- componente para mostrar los resultados de la busqueda -->
+<!-- "countryResponseArray" es la proiedad que se espera como un input en el componente -->
+<app-country-table-result [countryResponseArray]="countryResponse"></app-country-table-result>
+
+
+<div class="alert alert-danger" *ngIf="errorConsult">
+  No found data for "{{argument}}"
+</div>
