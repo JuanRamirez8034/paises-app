@@ -1,43 +1,15 @@
 <h2>Search by country</h2>
 <hr>
 
-<form action="#" class="row gap-2" autocomplete="off" (ngSubmit)="search();">
-  <div class="col-md-8">
-    <div class="form-floating">
-      <input type="text" class="form-control" placeholder="keywords..." name="argument" id="argument" [(ngModel)]="argument">
-      <label for="argument">keywords</label>
-    </div>
-  </div>
-  <div class="col-md">
-    <button type="submit" class="btn btn-secondary d-block w-100 h-100">search</button>
-  </div>
-</form>
+<!-- fomulario para realizar las busquedas -->
+<!-- recibimos el evento enviando desde el formulario "onSearch" y le pasamos el evento que contiene el argumento de texto -->
+<app-form-search-country (onSearch)="search($event);"></app-form-search-country>
 
 <hr>
 
-<table class="table table-hover" *ngIf="!errorConsult && countryResponse.length > 0;">
-  <thead class="bg-info">
-    <tr>
-      <th>#</th>
-      <th>Flag</th>
-      <th>Name</th>
-      <th>People</th>
-      <th>More...</th>
-    </tr>
-  </thead>
-  <tbody *ngFor="let country of countryResponse; let i = index">
-    <tr>
-      <th>{{i}}</th>
-      <th class="d-flex align-items-center">
-        <img [src]="country.flags.png" alt="Flag - {{country.name.common}}" class="img-flag">
-      </th>
-      <th>{{country.name.common}}</th>
-      <th>{{country.population | number}}</th>
-      <!-- para rutas con parametros se debe pasar un arreglo en el cual se van armando cada uno de los argumenos -->
-      <th><a href="#" [routerLink]="['/showCountry', country.cca2]">Link...</a></th>
-    </tr>
-  </tbody>
-</table>
+<!-- componente para mostrar los resultados de la busqueda -->
+<!-- "countryResponseArray" es la proiedad que se espera como un input en el componente -->
+<app-country-table-result [countryResponseArray]="countryResponse"></app-country-table-result>
 
 
 <div class="alert alert-danger" *ngIf="errorConsult">

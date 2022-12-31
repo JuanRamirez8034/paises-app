@@ -7,6 +7,8 @@ import { ByCapitalComponent } from './pages/by-capital/by-capital.component';
 import { ByCountryComponent } from './pages/by-country/by-country.component';
 import { ByRegionComponent } from './pages/by-region/by-region.component';
 import { ShowCountryComponent } from './pages/show-country/show-country.component';
+import { CountryTableResultComponent } from './components/country-table-result/country-table-result.component';
+import { FormSearchCountryComponent } from './components/form-search-country/form-search-country.component';
 
 
 
@@ -15,7 +17,9 @@ import { ShowCountryComponent } from './pages/show-country/show-country.componen
     ByCapitalComponent,
     ByCountryComponent,
     ByRegionComponent,
-    ShowCountryComponent
+    ShowCountryComponent,
+    CountryTableResultComponent,
+    FormSearchCountryComponent
   ],
   imports: [
     CommonModule,

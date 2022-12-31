@@ -15,14 +15,15 @@ export class ByCountryComponent {
   //inyectando o instanciando los servicios
   constructor(private countriesService:CountriesService) { }
 
-  public search():void{
+  public search(argument:string):void{
+    this.argument = argument; // asignamos el valor del argumento de la funcion al argumento de la clase
     this.errorConsult = false;
     // el metodo suscribe tiene varias funciones para procesar la informacion suscribe(
     //  (response)=>{} para la informacion regresada
     //  (error)=>{} para procesar los errores que puedan ocurrir
     //  (result)=>{} para procesar un resultado en caso de que todo halla ocurrido con exito
     //)
-    this.countriesService.searchCountry(this.argument)
+    this.countriesService.searchCountry(argument)
       .subscribe(
         (resp)=>{
           this.countryResponse = resp;//agregando la respuesta al arreglo correspondiente
