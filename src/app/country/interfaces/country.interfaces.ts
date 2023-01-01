@@ -113,5 +113,6 @@ export interface SearchCountryArguments{
     country ?: boolean;
     capital ?: boolean;
     region  ?: boolean;
+    code    ?: boolean;
   };
 }

@@ -15,9 +15,9 @@ export class CountriesService {
 
   // funcion que dispara las busquedas, recibe un objeto de tipo 'SearchCountryArguments' definido en las interfaces
   // el objeto recibe dos parametros "argumeto de busqueda" y "modo de busqueda", el modo de busqueda es de tipo booleano y se coloca en "true" la busqueda a hacer
-  public searchCountry({argument, mode={country:true, capital:false, region:false}}:SearchCountryArguments):Observable<Country[]>{
+  public searchCountry({argument, mode={country:true, capital:false, region:false, code: false}}:SearchCountryArguments):Observable<Country[]>{
     
-    const argumentMode = mode.country ? 'name' : mode.capital ? 'capital' : mode.region ? 'region' : 'name'; //asignando el valor correspondiente a l busqueda
+    const argumentMode = mode.country ? 'name' : mode.capital ? 'capital' : mode.region ? 'region' : mode.code ? 'alpha' : 'name'; //asignando el valor correspondiente a l busqueda
     console.log('Se busca por: "'+argumentMode+'"');
     
     
@@ -25,11 +25,4 @@ export class CountriesService {
 
     return this.Http.get<Country[]>(url);
   }
-
-  // funcion para buscar por codigo de pais
-  public searchByCode(code:string):Observable<Country>{
-    const url = `${this.API_URL}/alpha/${code}`;
-    return this.Http.get<Country>(url);
-  }
-
 }

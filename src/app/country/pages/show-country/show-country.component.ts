@@ -10,6 +10,8 @@ import { switchMap } from 'rxjs/operators';
 })
 export class ShowCountryComponent implements OnInit {
 
+  public countryData !: Country; //variable para almacenar la info del pais solicitado, al principio puede ser null
+
   // inyectando el observable de las rutas proveniente de angular/routing
   // se encarga de analizar la rutas cada vez que se accede a él
   constructor(private activatedRoute: ActivatedRoute, private countriesService:CountriesService) { }
@@ -41,13 +43,13 @@ export class ShowCountryComponent implements OnInit {
         // modificando la subscripcion, recibe el valor del primer "subscribe()" y retorna otra funcion que 
         // contuene su propio "subscribe()" al cual se le pasa el parametro de la primera funcion
         // y ese subscribe final se puede trabjar despues con el subscribe principal
-        
+
         // switchMap(({code})=>{return this.countriesService.searchByCode(code)})
-        switchMap(({code}) => this.countriesService.searchByCode(code))
+        switchMap(({code}) => this.countriesService.searchCountry({argument:code, mode:{code:true}}))
       )
-      .subscribe((country:Country)=>{
-        console.log(country);
-        
+      .subscribe((country:Country[])=>{
+        console.log(country[0]);
+        this.countryData = country[0];//guardando el unico valor del resultado en la variable
       })
 
   }
