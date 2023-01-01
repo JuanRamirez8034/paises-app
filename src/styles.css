@@ -11,3 +11,9 @@
   height: auto;
   display: block;
 }
+
+.img-flag-large{
+  width: 300px !important;
+  height: auto;
+  display: block;
+}
