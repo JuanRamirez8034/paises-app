@@ -49,8 +49,5 @@ export class ByRegionComponent {
       );
   }
 
-  public sugge(event:string):void{
-    this.activeRegion = event;
-    this.errorConsult = true;
-  }
+
 }
