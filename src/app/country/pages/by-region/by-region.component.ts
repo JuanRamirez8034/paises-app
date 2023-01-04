@@ -8,16 +8,26 @@ import { CountriesService } from '../../services/countries.service';
 })
 export class ByRegionComponent {
 
-
-  public argument        : string = '';//variable asociada al valor del input de busqueda
+  public regions         : string[] = ['africa', 'americas', 'asia', 'europe', 'oceania']; // regiones disponible
+  public activeRegion    : string = '';//variable para almacenar la regin seleccionada
   public errorConsult    : boolean = false;//variable para controlar el estado de erro de consultas y mostrar el alert
   public countryResponse : Country[] = []; // arreglo de paises para almacenar las respuestas
 
   //inyectando o instanciando los servicios
   constructor(private countriesService:CountriesService) { }
 
+  public setClassElement(item:string):string{
+    return item === this.activeRegion ? 'btn btn-warning text-white' : 'btn btn-outline-info';
+  }
+
   public search(argument:string):void{
-    this.argument = argument; // asignamos el valor del argumento de la funcion al argumento de la clase
+    // si la opcion seleccionada es igual a la activa y el arreglo de paises está lleno solo salimos
+    if(this.activeRegion === argument && this.countryResponse.length !== 0) return;
+
+    // restableciendo el arreglo de restpuesta a uno vacio
+    this.countryResponse = [];
+
+    this.activeRegion = argument; // asignamos el valor del argumento de la funcion al argumento de la clase
     this.errorConsult = false;
     // el metodo suscribe tiene varias funciones para procesar la informacion suscribe(
     //  (response)=>{} para la informacion regresada
@@ -40,7 +50,7 @@ export class ByRegionComponent {
   }
 
   public sugge(event:string):void{
-    this.argument = event;
+    this.activeRegion = event;
     this.errorConsult = true;
   }
 }

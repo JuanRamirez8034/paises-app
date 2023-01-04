@@ -1,10 +1,22 @@
-<h2>Search by region</h2>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<h2>Search by {{activeRegion}} region</h2>
 <hr>
 
 <!-- fomulario para realizar las busquedas -->
-<!-- recibimos el evento enviando desde el formulario "onSearch" y le pasamos el evento que contiene el argumento de texto -->
-<!-- recibimos el evento enviando desde el formulario "onBounce" y le pasamos el argumento que este trae a la funcion a ejecutar -->
-<app-form-search-country placeholderSearch="Region name" (onSearch)="search($event);" (onDebounce)="sugge($event);"></app-form-search-country>
+<h4>Select one region:</h4>
+<div class="d-flex flex-row gap-2 w-100">
+  <!-- para cambiar entre una clase se puede usar [class.<cssClassName>]="<booleanOperation>" -->
+  <!-- para alternar entre varias clases simultaneamente se puede usar [ngClass]="{'className':<booleanOperation>, 'className..': <booleanOperation>}" -->
+  <!-- se pueden utilizar operadores ternarios para cambiar clases [class]=" var1 === var2 ? 'clssNames..' : 'classNames2...'" 
+    Tabbien se puede crear una funcion del lado de la logica y retornar el resultado como un string
+  -->
+  <button 
+    *ngFor="let item of regions"
+    (click)="search(item.toString());"
+    class="btn" 
+    [class]="setClassElement(item.toString())"
+  >{{item | titlecase}}</button>
+</div>
 
 <hr>
 
@@ -14,5 +26,5 @@
 
 
 <div class="alert alert-danger" *ngIf="errorConsult">
-  No found data for "{{argument}}"
+  No found data for "{{activeRegion}}"
 </div>
