@@ -45,7 +45,7 @@ export class ShowCountryComponent implements OnInit {
         // y ese subscribe final se puede trabjar despues con el subscribe principal
 
         // switchMap(({code})=>{return this.countriesService.searchByCode(code)})
-        switchMap(({code}) => this.countriesService.searchCountry({argument:code, mode:{code:true}}))
+        switchMap(({code}) => this.countriesService.searchCountry({argument:code, mode:{code:true},liteMode:false}))
       )
       .subscribe((country:Country[])=>{
         console.log(country[0]);

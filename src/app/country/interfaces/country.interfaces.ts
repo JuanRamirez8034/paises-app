@@ -115,4 +115,5 @@ export interface SearchCountryArguments{
     region  ?: boolean;
     code    ?: boolean;
   };
+  liteMode?: boolean;
 }
